@@ -27,35 +27,59 @@
 	$: minutes = Math.floor((remainingTime % 3600) / 60);
 	$: seconds = remainingTime % 60;
 
-	let previousValues = {
-		days,
-		hours,
-		minutes,
-		seconds
-	};
+	let prevDays = days;
+	let prevHours = hours;
+	let prevMinutes = minutes;
+	let prevSeconds = seconds;
 
-	$: previousValues = { days, hours, minutes, seconds };
+	let daysAnimation = "";
+	let hoursAnimation = "";
+	let minutesAnimation = "";
+	let secondsAnimation = "";
+
+	$: {
+		if (days !== prevDays) {
+			daysAnimation = "falling";
+			setTimeout(() => daysAnimation = "", 500);
+			prevDays = days;
+		}
+		if (hours !== prevHours) {
+			hoursAnimation = "falling";
+			setTimeout(() => hoursAnimation = "", 500);
+			prevHours = hours;
+		}
+		if (minutes !== prevMinutes) {
+			minutesAnimation = "falling";
+			setTimeout(() => minutesAnimation = "", 500);
+			prevMinutes = minutes;
+		}
+		if (seconds !== prevSeconds) {
+			secondsAnimation = "falling";
+			setTimeout(() => secondsAnimation = "", 500);
+			prevSeconds = seconds;
+		}
+	}
 </script>
 
 <svelte:head>
 	<title>Countdown to Binx Birthday - Song Release</title>
-	<meta name="description" content="Countdown timer to Binx Birthday - Song Release (late) :D " />
+	<meta name="description" content="Countdown timer to Binx Birthday - Song Release" />
 </svelte:head>
 
 <section>
-	<h1>Countdown timer to Binx Birthday - Song Release (late) :D</h1>
+	<h1>Countdown timer to Binx Birthday - Song Release</h1>
 	<div class="timer">
 		<div class="time-unit">
-			<span class:falling={days !== previousValues.days}>{days}d</span>
+			<span class={daysAnimation}>{days}d</span>
 		</div>
 		<div class="time-unit">
-			<span class:falling={hours !== previousValues.hours}>{formatTime(hours)}:</span>
+			<span class={hoursAnimation}>{formatTime(hours)}:</span>
 		</div>
 		<div class="time-unit">
-			<span class:falling={minutes !== previousValues.minutes}>{formatTime(minutes)}:</span>
+			<span class={minutesAnimation}>{formatTime(minutes)}:</span>
 		</div>
 		<div class="time-unit">
-			<span class:falling={seconds !== previousValues.seconds}>{formatTime(seconds)}</span>
+			<span class={secondsAnimation}>{formatTime(seconds)}</span>
 		</div>
 	</div>
 </section>
