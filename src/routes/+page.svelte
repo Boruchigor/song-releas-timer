@@ -34,7 +34,7 @@
 </svelte:head>
 
 <section>
-	<h1>Countdown to August 16, 2024</h1>
+	<h1>Countdown timer to Binx Birthday - Song Release (late) :D</h1>
 	<div class="timer">
 		<span>{days}d {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}</span>
 	</div>
