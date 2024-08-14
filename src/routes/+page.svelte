@@ -30,7 +30,7 @@
 
 <svelte:head>
 	<title>Countdown to Binx Birthday - Song release</title>
-	<meta name="description" content="Countdown timer to August 16, 2024, at 8 PM" />
+	<meta name="description" content="Countdown timer to Binx Birthday - Song Release (late) :D " />
 </svelte:head>
 
 <section>
