@@ -26,17 +26,37 @@
 	$: hours = Math.floor((remainingTime % (24 * 3600)) / 3600);
 	$: minutes = Math.floor((remainingTime % 3600) / 60);
 	$: seconds = remainingTime % 60;
+
+	let previousValues = {
+		days,
+		hours,
+		minutes,
+		seconds
+	};
+
+	$: previousValues = { days, hours, minutes, seconds };
 </script>
 
 <svelte:head>
-	<title>Countdown to Binx Birthday - Song release</title>
+	<title>Countdown to Binx Birthday - Song Release</title>
 	<meta name="description" content="Countdown timer to Binx Birthday - Song Release (late) :D " />
 </svelte:head>
 
 <section>
 	<h1>Countdown timer to Binx Birthday - Song Release (late) :D</h1>
 	<div class="timer">
-		<span>{days}d {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}</span>
+		<div class="time-unit">
+			<span class:falling={days !== previousValues.days}>{days}d</span>
+		</div>
+		<div class="time-unit">
+			<span class:falling={hours !== previousValues.hours}>{formatTime(hours)}:</span>
+		</div>
+		<div class="time-unit">
+			<span class:falling={minutes !== previousValues.minutes}>{formatTime(minutes)}:</span>
+		</div>
+		<div class="time-unit">
+			<span class:falling={seconds !== previousValues.seconds}>{formatTime(seconds)}</span>
+		</div>
 	</div>
 </section>
 
@@ -55,17 +75,34 @@
 	h1 {
 		font-size: 2em;
 		margin-bottom: 20px;
+		text-align: center;
 	}
 
 	.timer {
-		font-size: 3em;
+		display: flex;
+		font-size: 4em;
 		font-weight: bold;
-		animation: pulse 1s infinite;
 	}
 
-	@keyframes pulse {
-		0% { transform: scale(1); }
-		50% { transform: scale(1.05); }
-		100% { transform: scale(1); }
+	.time-unit {
+		position: relative;
+		overflow: hidden;
+		width: 3ch;
+		text-align: center;
+	}
+
+	.time-unit span {
+		display: block;
+		transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+	}
+
+	.time-unit span.falling {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+
+	.time-unit span:not(.falling) {
+		transform: translateY(0);
+		opacity: 1;
 	}
 </style>
