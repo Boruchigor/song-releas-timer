@@ -1,8 +1,6 @@
 <script>
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-	import { webVitals } from '$lib/vitals';
-	import Header from './Header.svelte';
 	import './styles.css';
 
 	/** @type {import('./$types').LayoutServerData} */
