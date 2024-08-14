@@ -1,6 +1,14 @@
 <script>
-	// Set initial time in seconds (48 hours = 48 * 60 * 60 seconds)
-	let remainingTime = 48 * 60 * 60;
+	// Target date and time: August 16, 2024, at 20:00:00
+	const targetDate = new Date('2024-08-16T20:00:00');
+
+	// Calculate the remaining time in seconds
+	function getRemainingTime() {
+		const now = new Date();
+		return Math.floor((targetDate - now) / 1000);
+	}
+
+	let remainingTime = getRemainingTime();
 
 	// Timer logic to decrease time every second
 	setInterval(() => {
@@ -14,20 +22,21 @@
 	}
 
 	// Compute hours, minutes, and seconds from remainingTime
-	$: hours = Math.floor(remainingTime / 3600);
+	$: days = Math.floor(remainingTime / (24 * 3600));
+	$: hours = Math.floor((remainingTime % (24 * 3600)) / 3600);
 	$: minutes = Math.floor((remainingTime % 3600) / 60);
 	$: seconds = remainingTime % 60;
 </script>
 
 <svelte:head>
-	<title>48-Hour Countdown Timer</title>
-	<meta name="description" content="A countdown timer starting from 48 hours" />
+	<title>Countdown to Binx Birthday - Song release</title>
+	<meta name="description" content="Countdown timer to August 16, 2024, at 8 PM" />
 </svelte:head>
 
 <section>
-	<h1>48-Hour Countdown Timer</h1>
+	<h1>Countdown to August 16, 2024</h1>
 	<div class="timer">
-		<span>{formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}</span>
+		<span>{days}d {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}</span>
 	</div>
 </section>
 
@@ -49,7 +58,7 @@
 	}
 
 	.timer {
-		font-size: 4em;
+		font-size: 3em;
 		font-weight: bold;
 		animation: pulse 1s infinite;
 	}
