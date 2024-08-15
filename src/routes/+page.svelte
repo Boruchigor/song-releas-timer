@@ -59,6 +59,24 @@
 			prevSeconds = seconds;
 		}
 	}
+
+	// Function to trigger WAV file download
+	function downloadWavFile() {
+		const fileUrl = '/bbdayboyvibesbest.wav'; // Path to your WAV file
+		const a = document.createElement('a');
+		a.href = fileUrl;
+		a.download = 'Binx_Birthday_Song_Release.wav'; // File name when downloaded
+		a.click();
+	}
+
+	// Function to trigger MP3 file download
+	function downloadMp3File() {
+		const fileUrl = '/bdayboyvibes.mp3'; // Path to your MP3 file
+		const a = document.createElement('a');
+		a.href = fileUrl;
+		a.download = 'Binx_Birthday_Song_Release.mp3'; // File name when downloaded
+		a.click();
+	}
 </script>
 
 <svelte:head>
@@ -82,6 +100,8 @@
 			<span class={secondsAnimation}>{formatTime(seconds)}</span>
 		</div>
 	</div>
+	<button class="download-button" on:click={downloadWavFile}>Download WAV File</button>
+	<button class="download-button" on:click={downloadMp3File}>Download MP3 File</button>
 </section>
 
 <style>
@@ -128,5 +148,22 @@
 	.time-unit span:not(.falling) {
 		transform: translateY(0);
 		opacity: 1;
+	}
+
+	.download-button {
+		margin-top: 20px;
+		padding: 10px 20px;
+		font-size: 1em;
+		color: #ffffff;
+		background-color: #ff6600;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+		margin-right: 10px;
+	}
+
+	.download-button:hover {
+		background-color: #ff3300;
 	}
 </style>
