@@ -61,22 +61,22 @@
 	}
 
 	// Function to trigger WAV file download
-	function downloadWavFile() {
-		const fileUrl = '/bbdayboyvibesbest.wav'; // Path to your WAV file
-		const a = document.createElement('a');
-		a.href = fileUrl;
-		a.download = 'Binx_Birthday_Song_Release.wav'; // File name when downloaded
-		a.click();
-	}
+  function downloadWavFile() {
+    const fileUrl = 'https://drive.google.com/uc?export=download&id=1ghYZohqGUez4dbFsYJ4cXPrrkcdH9AL-';
+    const a = document.createElement('a');
+    a.href = fileUrl;
+    a.download = 'Binx_Birthday_Song_Release.wav'; // The name of the file when downloaded
+    a.click();
+  }
 
-	// Function to trigger MP3 file download
-	function downloadMp3File() {
-		const fileUrl = '/bdayboyvibes.mp3'; // Path to your MP3 file
-		const a = document.createElement('a');
-		a.href = fileUrl;
-		a.download = 'Binx_Birthday_Song_Release.mp3'; // File name when downloaded
-		a.click();
-	}
+  // Function to trigger MP3 file download
+  function downloadMp3File() {
+    const fileUrl = 'https://drive.google.com/uc?export=download&id=13uRtqCBPMGK-UrtvtRWwkF761E_VIZCi';
+    const a = document.createElement('a');
+    a.href = fileUrl;
+    a.download = 'Binx_Birthday_Song_Release.mp3'; // The name of the file when downloaded
+    a.click();
+  }
 </script>
 
 <svelte:head>
