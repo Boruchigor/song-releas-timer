@@ -1,6 +1,6 @@
 <script>
   // Target date and time: August 16, 2024, at 20:00:00
-  const targetDate = new Date('2024-08-15T19:10:00');
+  const targetDate = new Date('2024-08-15T20:00:00');
 
   // Calculate the remaining time in seconds
   function getRemainingTime() {
